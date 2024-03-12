@@ -7,6 +7,7 @@
     <style>
         body {
             font-family: 'Courier New', Courier, monospace;
+            /* Estilo da fonte da página: Fonte escolhida, Se não tiver a fonte anterior na máquina == Escolher esta aqui ou em diante */
         }
     </style>
 
