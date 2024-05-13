@@ -2,12 +2,68 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/laravel', function () {
-    return view('welcome');
-})->name('laravel');
+// Página Inicial
+Route::get('/', [App\Http\Controllers\HomeController::class, 'home'])->name('site.home');
 
-Route::get('/', [App\Http\Controllers\TestingController::class, 'testing'])->name('home');
+// Página de Fallback (Página de erro)
+Route::fallback(function () {
+    echo 'A página acessada não existe. <a href="' . route('site.home') . '">Clique aqui</a> para voltar à página inicial.';
+});
 
+// Página de Informações
+Route::get('/sobre', [App\Http\Controllers\SobreController::class, 'sobre'])->name('site.sobre');
+
+// Página de Contato
+Route::get('/contato', [App\Http\Controllers\ContatoController::class, 'contato'])->name('site.contato');
+
+// Página de Playtest
+Route::get('/playtest', [App\Http\Controllers\PlaytestController::class, 'playtest'])->name('playtest');
+
+// Página de Login para área de APP
+Route::get('/login', function () {
+    return 'Página de Login';
+})->name('site.login');
+
+// Rotas de Redirecionamento para a área de APP
+Route::prefix('/app')->group(function () {
+    // Página de clientes
+    Route::get('/clientes', function () {
+        return 'Área do cliente';
+    })->name('app.clientes');
+
+    // Página de fornecedores
+    Route::get('/fornecedores', function () {
+        return 'Área do fornecedor';
+    })->name('app.fornecedores');
+
+    // Página de produtos
+    Route::get('/produtos', function () {
+        return 'Página de produtos';
+    })->name('app.produtos');
+});
+
+// Rotas de Redirecionamento para a área de testes
+Route::prefix('/test')->group(function () {
+    Route::get(
+        '/{p1}/{p2}',
+        [App\Http\Controllers\TestRotasController::class, 'rotasArray']
+    );
+    Route::get(
+        '/{p1}',
+        [App\Http\Controllers\TestRotasController::class, 'rotasCompact']
+    );
+    Route::get(
+        '/{p1}/{p2}/{p3}',
+        [App\Http\Controllers\TestRotasController::class, 'rotasWith']
+    );
+});
+
+// Página de redirecionamento
+Route::get('/rota2', function () {
+    return redirect()->route('site.teste');
+})->name('site.rota2');
+
+// Página de parâmetros
 Route::get(
     '/parametros/{id}/{nome?}/{mensagem?}',
     function (
@@ -22,19 +78,7 @@ Route::get(
     }
 )->where('id', '[0-9]')->where('nome', '[A-Za-z]+')->name('parametros');
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-| --------------------------------------------------------------------------
-|
-| O código que está chamando o método "testing" da classe "TestingController" que está localizada no diretório "app/Http/Controllers/TestingController.php".
-| O método "testing" está retornando a view "testing.blade.php" que está localizada no diretório "resources/views".
-|
-|--------------------------------------------------------------------------
-*/
+// Página de documentação do Laravel
+Route::get('/laravel', function () {
+    return view('welcome');
+})->name('laravel');

@@ -1,25 +1,13 @@
 @extends('layout')
 
 @section('content')
-    {{-- Heading --}}
-    <h1> Página de testes</h1>
-
-    {{-- Row of buttons --}}
-
-    <div style="display:flex;">
-        <hr>
-        <div>
-            <a href="{{ route('laravel') }}">
-                <button>Documentação do laravel</button>
-            </a>
-        </div>
-        <hr>
-    </div>
-
     {{-- Table --}}
+    <h1>Página de Playtest</h1>
+
+    <h2>Lista de clientes</h2>
     <table border="1px solid black">
-        <caption>
-            Lista de pessoas
+        <caption style="text-align:start">
+            Tabela de informações
         </caption>
         <colgroup> {{-- Define a largura das colunas --}}
             <col style="width: 70%">
@@ -40,11 +28,11 @@
     </table>
 
     {{-- Descrições rápidas --}}
-    <p>Este é um parágrafo de teste</p>
+    <h2>Parâmetros da controller</h2>
     @if ($numero < 15)
-        <p>{{ $numero }} é menor que 15</p>
+        <p>O parâmetro {{ $numero }} é menor que 15</p>
     @else
-        <p>{{ $numero }} é maior que 15</p>
+        <p>O parâmetro {{ $numero }} é maior que 15</p>
     @endif
 
     {{-- List of itens --}}

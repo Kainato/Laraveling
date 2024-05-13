@@ -7,13 +7,24 @@
     <style>
         body {
             /* Estilo da fonte da página: Fonte escolhida, Se não tiver a fonte anterior na máquina == Escolher esta aqui ou em diante */
-            font-family: 'Courier New', Courier, monospace;
+            font-family: Tahoma, Arial, Helvetica, sans-serif;
             /* Cor de fundo da página */
             background-color: #111827;
             /* Cor do texto da página */
             color: #ffffff;
-            /* Centralizar o texto */
+            /* Centralização do texto */
             text-align: initial;
+            /* Padding da página */
+            padding-top: 4px;
+            padding-bottom: 8px;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid white;
         }
     </style>
 
