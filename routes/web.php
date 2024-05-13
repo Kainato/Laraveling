@@ -8,9 +8,19 @@ Route::get('/laravel', function () {
 
 Route::get('/', [App\Http\Controllers\TestingController::class, 'testing'])->name('home');
 
-Route::get('/docsphp', [App\Http\Controllers\DocsPhpController::class, 'php'])->name('docsphp');
+Route::get(
+    '/parametros/{id}/{nome?}/{mensagem?}',
+    function (
+        int $identificador,
+    ) {
+        $name = request('nome');
+        $message = request('mensagem');
 
-Route::get('/docshtml', [App\Http\Controllers\DocsHtmlController::class, 'html'])->name('docshtml');
+        echo "* Id: $identificador <br>";
+        echo "Nome (opcional): $name <br>";
+        echo "Mensagem (opcional): $message <br>";
+    }
+)->where('id', '[0-9]')->where('nome', '[A-Za-z]+')->name('parametros');
 
 /*
 |--------------------------------------------------------------------------
@@ -21,9 +31,10 @@ Route::get('/docshtml', [App\Http\Controllers\DocsHtmlController::class, 'html']
 | routes are loaded by the RouteServiceProvider and all of them will
 | be assigned to the "web" middleware group. Make something great!
 |
-|--------------------------------------------------------------------------
+| --------------------------------------------------------------------------
+|
 | O código que está chamando o método "testing" da classe "TestingController" que está localizada no diretório "app/Http/Controllers/TestingController.php".
 | O método "testing" está retornando a view "testing.blade.php" que está localizada no diretório "resources/views".
-| O método "testing" está recebendo um array de dados que será passado para a view "testing.blade.php".
-| O array de dados contém as variáveis $nome, $nomezinho, $proximaPaginaRecebeIsso e $numero.
+|
+|--------------------------------------------------------------------------
 */

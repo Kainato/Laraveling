@@ -7,23 +7,13 @@
     {{-- Row of buttons --}}
 
     <div style="display:flex;">
-        <div>
-            <a href="{{ route('docshtml') }}">
-                <button>Documentação do html</button>
-            </a>
-        </div>
-        <hr>
-        <div>
-            <a href="{{ route('docsphp') }}">
-                <button>Documentação do php</button>
-            </a>
-        </div>
         <hr>
         <div>
             <a href="{{ route('laravel') }}">
                 <button>Documentação do laravel</button>
             </a>
         </div>
+        <hr>
     </div>
 
     {{-- Table --}}
