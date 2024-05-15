@@ -67,8 +67,7 @@ Route::get('/playtest', [App\Http\Controllers\PlaytestController::class, 'playte
 // Página de documentação do Laravel
 // URL: http://localhost:8000/laravel
 Route::get('/laravel', function () {
-    return view('wel
-come');
+    return view('welcome');
 })->name('laravel');
 
 // -----------------------------------------------------------------------------
@@ -101,7 +100,7 @@ Route::prefix('/test')->group(function () {
 // Página de redirecionamento
 // URL: http://localhost:8000/rota2
 Route::get('/rota2', function () {
-    return redirect()->route('site.teste');
+    return redirect()->route('site.contato');
 })->name('site.rota2');
 
 // Página de parâmetros

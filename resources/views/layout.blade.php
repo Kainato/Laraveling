@@ -5,9 +5,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
+        /* ---------------------------------------------------------------------
+        // ---------------------------- CSS Projeto ----------------------------
+        // ------------------------------------------------------------------ */
         * {
             font-family: Arial, Helvetica, sans-serif;
         }
+
+        /* ---------------------------------------------------------------------
+        // ---------------------------- CSS  Padrão ----------------------------
+        // ------------------------------------------------------------------ */
 
         body {
             /* Estilo da fonte da página: Fonte escolhida, Se não tiver a fonte anterior na máquina == Escolher esta aqui ou em diante */
@@ -22,12 +29,6 @@
             margin: 0px;
         }
 
-        table,
-        th,
-        td {
-            border: 1px solid white;
-        }
-
         header {
             background-color: #d84a51;
             color: white;
@@ -36,14 +37,54 @@
             position: sticky;
         }
 
+        hr {
+            margin: 10px 0;
+            border: none;
+        }
+
+        footer {
+            background-color: #d84a51;
+            color: white;
+            text-align: center;
+            position: relative;
+            width: 100%;
+            bottom: 0;
+            padding: 2px 0;
+        }
+
         form {
             display: flex;
             flex-direction: column;
         }
 
-        hr {
-            margin: 10px 0;
-            border: none;
+        table,
+        th,
+        td {
+            border: 1px solid white;
+        }
+
+        a {
+            color: #ED5159;
+            /* cor padrão do link */
+            text-decoration: none;
+            /* remover sublinhado */
+        }
+
+        a:visited {
+            color: #ED5159;
+            /* cor do link visitado */
+        }
+
+        a:hover {
+            color: #BC181F;
+            /* cor do link ao passar o mouse */
+            text-decoration: underline;
+            /* sublinhado ao passar o mouse */
+        }
+
+        a:active {
+            color: #BC181F;
+            /* cor do link ativo (clicado) */
         }
 
         input,
@@ -101,14 +142,9 @@
             background-color: #BC181F;
         }
 
-        footer {
-            background-color: #d84a51;
-            color: white;
-            text-align: center;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-        }
+        /* ---------------------------------------------------------------------
+        // ---------------------------- CSS Classes ----------------------------
+        // ------------------------------------------------------------------ */
 
         .headerContainer {
             width: 90%;
@@ -124,12 +160,22 @@
             padding: 20px 0;
         }
 
+        .rowButtonsContainer {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-evenly;
+            padding: 0;
+        }
 
         .formsContainer {
             width: 80%;
             margin: auto;
             overflow: hidden;
-            padding: 20px 0;
+            padding: 0px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -149,38 +195,6 @@
         .content {
             overflow: hidden;
         }
-
-        .content h1 {
-            margin-top: 0;
-        }
-
-        .content p {
-            line-height: 1.6;
-        }
-
-        a {
-            color: #ED5159;
-            /* cor padrão do link */
-            text-decoration: none;
-            /* remover sublinhado */
-        }
-
-        a:visited {
-            color: #ED5159;
-            /* cor do link visitado */
-        }
-
-        a:hover {
-            color: #BC181F;
-            /* cor do link ao passar o mouse */
-            text-decoration: underline;
-            /* sublinhado ao passar o mouse */
-        }
-
-        a:active {
-            color: #BC181F;
-            /* cor do link ativo (clicado) */
-        }
     </style>
 </head>
 
@@ -190,6 +204,7 @@
 
 <body>
     @yield('content')
+    <hr>
 </body>
 
 <footer>
