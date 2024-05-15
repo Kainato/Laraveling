@@ -11,30 +11,6 @@
         <div class="profile-picture">
             <img src="https://i.ibb.co/Z1D1mqH/Captura-de-tela-2024-05-14-090821.png" alt="Minha Foto">
         </div>
-
-        {{-- <div class="content">
-            <h1>Caio (Kainato) Calado</h1>
-            <p>
-                Olá! Meu nome é Caio calado, e eu sou um(a) [sua profissão ou ocupação]. Tenho paixão por [seus interesses
-                ou
-                hobbies].
-                Na minha jornada, adquiri habilidades em [suas habilidades principais].
-            </p>
-            <p>
-                Quando não estou [trabalhando/estudando], gosto de [seus hobbies].
-                Eu acredito que [alguma filosofia pessoal ou valor importante para você].
-                Sempre busco aprender algo novo e melhorar a cada dia.
-            </p>
-            <p>
-                Se quiser saber mais sobre mim ou entrar em contato, sinta-se à vontade para [seu método de contato
-                preferido, como e-mail ou redes sociais].
-            </p>
-            <a href="https://github.com/kainato">
-                <p>
-                    Para ver mais sobre mim, clique aqui!
-                </p>
-            </a>
-        </div> --}}
         <div class="content">
             <h2>
                 What is Lorem Ipsum?

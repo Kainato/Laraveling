@@ -1,11 +1,10 @@
 @extends('layout')
 
 @section('header')
-    <h1 >Página inicial</h1>
+    <h1>Página inicial</h1>
 @endsection
 
 @section('content')
-    {{-- Menu --}}
     <h2>Menu</h2>
     <ul>
         <li>

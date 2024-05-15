@@ -4,11 +4,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    {{-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src example.com;"> --}}
     <style>
+        * {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
         body {
             /* Estilo da fonte da página: Fonte escolhida, Se não tiver a fonte anterior na máquina == Escolher esta aqui ou em diante */
-            font-family: Arial, Helvetica, sans-serif;
             /* Cor de fundo da página */
             background-color: #241747;
             /* Cor do texto da página */
@@ -34,14 +36,78 @@
             position: sticky;
         }
 
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        hr {
+            margin: 10px 0;
+            border: none;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 80%;
+            padding: 10px;
+            border: 2px solid #d84a51;
+            border-radius: 12px;
+            font-size: 16px;
+            overflow: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            resize: vertical;
+            height: 100px;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-radius: 12px;
+            border-color: #ED5159;
+        }
+
+        select:focus {
+            border-color: #ED5159;
+            background-color: #ED5159;
+            color: #ffffff;
+        }
+
+        select::-ms-expand {
+            display: none;
+        }
+
+        select option {
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            background-color: #d84a51;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #BC181F;
+        }
+
         footer {
             background-color: #d84a51;
             color: white;
             text-align: center;
-            /* position: fixed; */
+            position: fixed;
             width: 100%;
             bottom: 0;
-            padding: 4px 0;
         }
 
         .headerContainer {
@@ -56,6 +122,17 @@
             margin: auto;
             overflow: hidden;
             padding: 20px 0;
+        }
+
+
+        .formsContainer {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            padding: 20px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .profile-picture {
@@ -82,22 +159,29 @@
         }
 
         a {
-            color: #ED5159; /* cor padrão do link */
-            text-decoration: none; /* remover sublinhado */
+            color: #ED5159;
+            /* cor padrão do link */
+            text-decoration: none;
+            /* remover sublinhado */
         }
+
         a:visited {
-            color: #ED5159; /* cor do link visitado */
+            color: #ED5159;
+            /* cor do link visitado */
         }
+
         a:hover {
-            color: #BC181F; /* cor do link ao passar o mouse */
-            text-decoration: underline; /* sublinhado ao passar o mouse */
+            color: #BC181F;
+            /* cor do link ao passar o mouse */
+            text-decoration: underline;
+            /* sublinhado ao passar o mouse */
         }
+
         a:active {
-            color: #BC181F; /* cor do link ativo (clicado) */
+            color: #BC181F;
+            /* cor do link ativo (clicado) */
         }
     </style>
-
-    <title>Learning Laravel</title>
 </head>
 
 <header>
@@ -109,5 +193,5 @@
 </body>
 
 <footer>
-    <p>&copy; 2024 | Kainato | Laraveling. Todos os direitos reservados.</p>
+    <p>&copy; 2024 | Kainato - Laraveling | Todos os direitos reservados.</p>
 </footer>
