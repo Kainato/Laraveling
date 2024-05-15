@@ -31,11 +31,6 @@
             </a>
         </li>
         <hr>
-        <li>
-            <a href="{{ route('laravel') }}">
-                <button>Documentação do laravel</button>
-            </a>
-        </li>
     </ul>
 
     <h3>Menu do app</h3>
@@ -64,6 +59,12 @@
         <li>
             <a href="{{ route('playtest') }}">
                 <button>Playtest</button>
+            </a>
+        </li>
+        <hr>
+        <li>
+            <a href="{{ route('laravel') }}">
+                <button>Documentação do laravel</button>
             </a>
         </li>
     </ul>
