@@ -38,4 +38,15 @@
     {{-- List of itens --}}
     <p>Meu nome: {{ $nome }}</p>
     <p>Eu sou real? {{ $souReal ? 'Sim' : 'Não' }}</p>
+
+    {{-- Brincando com a blade --}}
+    {{ 'Imprimir texto tipo 1' }}
+    <?= 'Imprimir texto tipo 2' ?>
+
+    {{-- É assim que se insere um bloco de código de PHP puro --}}
+    @php
+        // Para comentários de uma linha
+        /* Para comentário de múltiplas linhas */
+        echo 'Imprimir texto tipo 3';
+    @endphp
 @endsection

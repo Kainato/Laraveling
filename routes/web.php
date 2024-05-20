@@ -39,9 +39,7 @@ Route::prefix('/app')->group(function () {
 
     // Página de fornecedores
     // URL: http://localhost:8000/app/fornecedores
-    Route::get('/fornecedores', function () {
-        return 'Área do fornecedor';
-    })->name('app.fornecedores');
+    Route::get('/fornecedores', [App\Http\Controllers\FornecedorController::class, 'index'])->name('app.fornecedores');
 
     // Página de produtos
     // URL: http://localhost:8000/app/produtos

@@ -58,9 +58,31 @@
         }
 
         table,
-        th,
+        thead,
         td {
             border: 1px solid white;
+            border-collapse: collapse;
+            width: 100%;
+            vertical-align: center;
+        }
+
+        thead {
+            background-color: #d84a51;
+            height: 50px;
+            text-align: center;
+        }
+
+        td {
+            padding: 10px;
+            text-align: start;
+        }
+
+        tr:nth-child(even) {
+            background-color: #160e2b;
+        }
+
+        tr:hover {
+            background-color: #d84a51;
         }
 
         a {
