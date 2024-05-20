@@ -60,9 +60,9 @@
         table,
         thead,
         td {
+            width: 100%;
             border: 1px solid white;
             border-collapse: collapse;
-            width: 100%;
             vertical-align: center;
         }
 
