@@ -1,9 +1,7 @@
 @extends('layout')
 
 @section('header')
-    <div class="headerContainer">
-        <h1>Playtest</h1>
-    </div>
+    <h1>Playtest</h1>
 @endsection
 
 @section('content')

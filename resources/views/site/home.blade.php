@@ -1,89 +1,36 @@
 @extends('layout')
 
 @section('header')
-    <div class="headerContainer">
-        <h1>Página inicial</h1>
-    </div>
+    <h1>Página inicial</h1>
 @endsection
 
 @section('content')
-    {{-- ------------------------------------------------------------------ --}}
-    <div class="container">
-        <h2>Menu inicial</h2>
-    </div>
-    <div class="rowButtonsContainer">
-        <a href="{{ route('site.home') }}">
-            <button>Página inicial</button>
-        </a>
-        <a href="{{ route('site.sobre') }}">
-            <button>Sobre</button>
-        </a>
-        <a href="{{ route('site.contato') }}">
-            <button>Contato</button>
-        </a>
-        <a href="{{ route('site.login') }}">
-            <button>Login</button>
-        </a>
-    </div>
-    {{-- ------------------------------------------------------------------ --}}
-    <div class="container">
-        <h2>Menu do app</h2>
-    </div>
-    <div class="rowButtonsContainer">
-        <a href="{{ route('app.clientes') }}">
-            <button>Clientes</button>
-        </a>
-        <a href="{{ route('app.fornecedores') }}">
-            <button>Fornecedores</button>
-        </a>
-        <a href="{{ route('app.produtos') }}">
-            <button>Produtos</button>
-        </a>
-    </div>
-    {{-- ------------------------------------------------------------------ --}}
-    <div class="container">
-        <h2>Menu extra</h2>
-    </div>
+    <div class="column">
+        <div class="leftColumn">
+            <h2>Seja bem-vindo!</h2>
+            <p>Este site de exemplo foi desenvolvido como parte do curso de Laravel e serve como uma vitrine do meu trabalho
+                e habilidades como desenvolvedor web. Utilizando o poderoso framework Laravel, criei uma aplicação que
+                demonstra várias funcionalidades e melhores práticas no desenvolvimento de software.</p>
 
-    <div class="rowButtonsContainer">
-        <a href="{{ route('playtest') }}">
-            <button>Playtest</button>
-        </a>
-        <a href="{{ route('laravel') }}">
-            <button>Documentação do laravel</button>
-        </a>
-    </div>
-    {{-- ------------------------------------------------------------------ --}}
-    <div class="container">
-        <h2>Menu de aprendizado</h2>
-    </div>
-    <div class="rowButtonsContainer">
-        <a href="/test/10/20" disabled selected>
-            <button>Teste array associativo</button>
-        </a>
-        <a href="/test/500" disabled selected>
-            <button>Teste compact</button>
-        </a>
-        <a href="/test/42/69/7" disabled selected>
-            <button>Teste with</button>
-        </a>
-    </div>
-    <hr>
-    <div class="rowButtonsContainer">
-        <a href="{{ route('site.rota2') }}">
-            <button>Teste redirecionamento</button>
-        </a>
-    </div>
-    <hr>
-    <div class="rowButtonsContainer">
-        <a href="/parametros/1" disabled selected>
-            <button>Teste parametros 1</button>
-        </a>
-        <a href="/parametros/1/Caio" disabled selected>
-            <button>Teste parametros 2</button>
-        </a>
-        <a href="/parametros/1/Caio/Hello_World" disabled selected>
-            <button>Teste parametros 3</button>
-        </a>
+            <h2>Próximos passos</h2>
+            <p>Os próximos passos incluem a implementação de novas funcionalidades, melhorias no design e na usabilidade do
+                site, e a correção de bugs e problemas de segurança. Além disso, pretendo adicionar mais conteúdo e
+                informações sobre mim e sobre o meu trabalho no desenvolvimento web.</p>
+        </div>
+        <div class="rightColumn">
+            <h2>Menu do site</h2>
+            <p>Acesse sua a área restrita e conheça mais do CRUD implementado</p>
+            <a href="{{ route('app.clientes') }}">
+                <button>Clique aqui!</button>
+            </a>
+            <p>Saiba mais como se tornar um apoiador!</p>
+            <a href="{{ route('app.fornecedores') }}">
+                <button>Descubra!</button>
+            </a>
+            <p>Conheça mais sobre meus outros projetos</p>
+            <a href="{{ route('app.produtos') }}">
+                <button>Veja mais!</button>
+            </a>
+        </div>
     </div>
 @endsection

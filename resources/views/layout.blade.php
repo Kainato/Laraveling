@@ -169,10 +169,45 @@
         // ------------------------------------------------------------------ */
 
         .headerContainer {
-            width: 90%;
+            width: 100%;
             margin: auto;
             overflow: hidden;
             padding: 4px 0;
+        }
+
+        .headerContainer h1 {
+            float: left;
+            margin-left: 40px;
+        }
+
+        .headerMenu {
+            float: right;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            margin-right: 40px;
+        }
+
+        .headerMenu ul {
+            list-style-type: none;
+            overflow: hidden;
+        }
+
+        .headerMenu li {
+            float: left;
+        }
+
+        .headerMenu li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+
+        .headerMenu li a:hover {
+            background-color: #241747;
         }
 
         .container {
@@ -180,6 +215,35 @@
             margin: auto;
             overflow: hidden;
             padding: 20px 0;
+        }
+
+        .column {
+            width: 90%;
+            height: 100%;
+            min-height: 768px;
+            margin: auto;
+            align-content: center;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .leftColumn {
+            float: left;
+            width: 60%;
+            height: 100%;
+        }
+
+        .rightColumn {
+            padding: 0px 40px;
+            float: right;
+            width: 40%;
+            height: 100%;
+        }
+
+        .rightColumn a {
+            text-decoration: none;
+            flex-direction: column;
+            justify-content: end;
         }
 
         .rowButtonsContainer {
@@ -221,7 +285,17 @@
 </head>
 
 <header>
-    @yield('header')
+    <div class="headerContainer">
+        @yield('header')
+        <div class="headerMenu">
+            <ul>
+                <li><a href="{{ route('site.home') }}">Home</a></li>
+                <li><a href="{{ route('site.sobre') }}">Sobre</a></li>
+                <li><a href="{{ route('site.contato') }}">Contato</a></li>
+                <li><a href="{{ route('site.login') }}">Login</a></li>
+            </ul>
+        </div>
+    </div>
 </header>
 
 <body>
