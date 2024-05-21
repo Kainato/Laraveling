@@ -187,6 +187,7 @@
             justify-content: space-between;
             align-items: center;
             margin-right: 40px;
+            gap: 1rem;
         }
 
         .headerMenu ul {
@@ -210,6 +211,16 @@
             background-color: #241747;
         }
 
+        .toggle-button {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: none;
+            /* Escondido por padrão */
+        }
+
         .container {
             width: 80%;
             margin: auto;
@@ -227,13 +238,13 @@
             justify-content: space-between;
         }
 
-        .leftColumn {
+        .sidebar {
             float: left;
             width: 60%;
             height: 100%;
         }
 
-        .rightColumn {
+        .content {
             padding: 0px 40px;
             float: right;
             width: 40%;
@@ -278,24 +289,101 @@
             height: 150px;
         }
 
-        .content {
-            overflow: hidden;
+        @media (max-width: 768px) {
+            .headerContainer {
+                width: 100%;
+                margin: auto;
+                overflow: hidden;
+                padding: 4px 0px;
+                justify-content: space-between;
+                display: flex;
+            }
+
+            .headerMenu {
+                display: none;
+                flex-direction: column;
+                position: fixed;
+                top: 60px;
+                right: 0;
+                background-color: #333;
+                width: auto;
+                height: auto;
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            }
+
+            .headerMenu.active {
+                display: flex;
+            }
+
+            .headerMenu ul {
+                list-style-type: none;
+                overflow: hidden;
+                padding: 0;
+            }
+
+            .headerMenu li {
+                float: none;
+            }
+
+            .headerMenu li a {
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                background-color: #ED5159;
+            }
+
+            .toggle-button {
+                display: block;
+                float: right;
+                margin-right: 40px;
+                font-size: 1.5rem;
+                cursor: pointer;
+                /* Mostra o botão em telas menores */
+            }
+
+            .column {
+                flex-direction: column;
+                width: 90%;
+                height: 100%;
+                min-height: 768px;
+                margin: auto;
+                align-content: center;
+                display: flex;
+                justify-content: start;
+            }
+
+            .sidebar,
+            .content {
+                flex: none;
+                padding: 0;
+                width: 100%;
+                height: 100%;
+            }
         }
     </style>
 </head>
 
 <header>
-    <div class="headerContainer">
+    <nav class="headerContainer">
         @yield('header')
+        <button class="toggle-button" aria-label="Toggle navigation">
+            &#9776;
+        </button>
         <div class="headerMenu">
             <ul>
-                <li><a href="{{ route('site.home') }}">Home</a></li>
+                <li><a href="{{ route('site.home') }}">Início</a></li>
                 <li><a href="{{ route('site.sobre') }}">Sobre</a></li>
                 <li><a href="{{ route('site.contato') }}">Contato</a></li>
+                <li><a href="{{ route('app.clientes') }}">Clientes</a></li>
+                <li><a href="{{ route('app.fornecedores') }}">Fornecedores</a></li>
+                <li><a href="{{ route('app.produtos') }}">Produtos</a></li>
                 <li><a href="{{ route('site.login') }}">Login</a></li>
             </ul>
         </div>
-    </div>
+    </nav>
+    <script src="{{ asset('assets/js/layout_scripts.js') }}"></script>
 </header>
 
 <body>
