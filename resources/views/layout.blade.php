@@ -187,7 +187,6 @@
             justify-content: space-between;
             align-items: center;
             margin-right: 40px;
-            gap: 1rem;
         }
 
         .headerMenu ul {
@@ -289,6 +288,10 @@
             height: 150px;
         }
 
+        /* ---------------------------------------------------------------------
+        // ---------------------------- Classe Mobile --------------------------
+        // ------------------------------------------------------------------ */
+
         @media (max-width: 768px) {
             .headerContainer {
                 width: 100%;
@@ -305,10 +308,12 @@
                 position: fixed;
                 top: 60px;
                 right: 0;
-                background-color: #333;
+                background-color: #ED5159;
                 width: auto;
                 height: auto;
                 box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+                border: 2px solid #ffffff;
+                text-align: center;
             }
 
             .headerMenu.active {
@@ -319,6 +324,10 @@
                 list-style-type: none;
                 overflow: hidden;
                 padding: 0;
+            }
+
+            .headerMenu a {
+                text-align: center;
             }
 
             .headerMenu li {
@@ -361,6 +370,56 @@
                 width: 100%;
                 height: 100%;
             }
+
+            .expansivel-btn {
+                background-color: #d84a51;
+                color: white;
+                border: none;
+                padding: 10px;
+                cursor: pointer;
+                width: 100%;
+                text-align: center;
+            }
+
+            .expansivel-btn li {
+                display: none;
+                text-align: center;
+            }
+
+            .expansivel-btn.active {
+                display: block;
+                text-align: center;
+            }
+
+            .expansivel-btn li a {
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+                background-color: #ED5159;
+                align-items: center;
+            }
+
+            .submenu {
+                display: none;
+                background-color: #d84a51;
+                color: #241747;
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+                position: absolute;
+                top: 0;
+                right: 100%;
+                z-index: 1;
+                border: 2px solid #ffffff;
+            }
+
+            .submenu a {
+                padding: 12px 16px;
+            }
+
+            .submenu a:hover {
+                background-color: #ddd;
+            }
         }
     </style>
 </head>
@@ -376,9 +435,12 @@
                 <li><a href="{{ route('site.home') }}">Início</a></li>
                 <li><a href="{{ route('site.sobre') }}">Sobre</a></li>
                 <li><a href="{{ route('site.contato') }}">Contato</a></li>
-                <li><a href="{{ route('app.clientes') }}">Clientes</a></li>
-                <li><a href="{{ route('app.fornecedores') }}">Fornecedores</a></li>
-                <li><a href="{{ route('app.produtos') }}">Produtos</a></li>
+                <li><a class="expansivel-btn">◄ Área do app</a></li>
+                <div class="submenu">
+                    <li><a href="{{ route('app.clientes') }}">Clientes</a></li>
+                    <li><a href="{{ route('app.fornecedores') }}">Fornecedores</a></li>
+                    <li><a href="{{ route('app.produtos') }}">Produtos</a></li>
+                </div>
                 <li><a href="{{ route('site.login') }}">Login</a></li>
             </ul>
         </div>

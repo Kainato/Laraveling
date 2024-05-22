@@ -12,7 +12,7 @@
                 e habilidades como desenvolvedor web. Utilizando o poderoso framework Laravel, criei uma aplicação que
                 demonstra várias funcionalidades e melhores práticas no desenvolvimento de software.</p>
             <a href="{{ route('laravel') }}">
-                Documentação do laravel
+                → Documentação do laravel
             </a>
 
             <h2>Próximos passos</h2>
