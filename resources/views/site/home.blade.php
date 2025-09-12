@@ -21,14 +21,13 @@
                 informações sobre mim e sobre o meu trabalho no desenvolvimento web.</p>
         </div>
         <div class="content">
-            <h2>What is Lorem Ipsum?</h2>
-            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-                industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
-                scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into
-                electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of
-                Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like
-                Aldus PageMaker including versions of Lorem Ipsum.
-            </p>
+            <h2>🚀 Sobre mim</h2>
+            <ul>
+                <li>🔭 Atualmente trabalhando na Teatech expandindo minha visão além do código, aplicando meus conhecimentos de gestão de pessoas para liderar e colaborar melhor em equipe.</li>
+                <li>📘 Atualmente estudando na UNIT | Universidade Tiradentes</li>
+                <li>🎯 Objetivo de carreira atual: Iniciar minha trajetória profissional no exterior, contribuindo com soluções criativas e escaláveis em projetos de impacto.</li>
+                <li>⚡ Curiosidade: Adoro testar ferramentas novas e costumo perder horas me aventurando em novas ideias e features</li>
+            </ul>
         </div>
     </div>
 @endsection
