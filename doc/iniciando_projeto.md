@@ -33,5 +33,8 @@
 
 # Comandos Extras
 
-- Laravel Route Preview
-  - ⚡ Runs `php artisan route:list --json` in the background
+- Laravel Route Preview (Runs `php artisan route:list --json` in the background)
+  - Open a Laravel project in VSCode.
+  - Press `Ctrl+Shift+P` or `Cmd+Shift+P` on macOS.
+  - Run the command: **Laravel: Preview Routes**
+  - Filter routes or click on any URI to jump to the controller.
