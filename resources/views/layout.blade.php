@@ -433,15 +433,6 @@
         <div class="headerMenu">
             <ul>
                 <li><a href="{{ route('site.home') }}">Início</a></li>
-                <li><a href="{{ route('site.sobre') }}">Sobre</a></li>
-                <li><a href="{{ route('site.contato') }}">Contato</a></li>
-                <li><a class="expansivel-btn">◄ Área do app</a></li>
-                <div class="submenu">
-                    <li><a href="{{ route('app.clientes') }}">Clientes</a></li>
-                    <li><a href="{{ route('app.fornecedores') }}">Fornecedores</a></li>
-                    <li><a href="{{ route('app.produtos') }}">Produtos</a></li>
-                </div>
-                <li><a href="{{ route('site.login') }}">Login</a></li>
             </ul>
         </div>
     </nav>
@@ -454,5 +445,5 @@
 </body>
 
 <footer>
-    <p>&copy; 2024 | Kainato - Laraveling | Todos os direitos reservados.</p>
+    <p>&copy; 2025 | Kainato - Laraveling | Todos os direitos reservados.</p>
 </footer>

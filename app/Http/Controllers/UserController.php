@@ -1,30 +1,45 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
+use App\Models\UserModel;
+
 
 class UserController extends Controller
 {
-    private $users = [
-        ['id' => 1, 'nome' => 'Alice', 'email' => 'alice@email.com'],
-        ['id' => 2, 'nome' => 'Bob', 'email' => 'bob@email.com'],
-        ['id' => 3, 'nome' => 'Carol', 'email' => 'carol@email.com'],
-    ];
-
-    public function index()
+    /// Armazena um novo usuário no banco de dados
+    public function store(Request $request)
     {
-        return response()->json($this->users);
+        UserModel::create([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'password'=> bcrypt($request->input('password')),
+        ]);
     }
-
-    public function show($id)
+    /// Atualiza os dados de um usuário existente
+    public function update(Request $request, UserModel $user)
     {
-        $user = collect($this->users)->firstWhere('id', (int) $id);
-
-        if (!$user) {
-            return response()->json(['error' => 'Usuário não encontrado'], 404);
-        }
-
+        $user->update($request->all());
+    }
+    /// Atualiza apenas o email de um usuário existente
+    public function updateEmail(Request $request, UserModel $user)
+    {
+        $user->update(['email' => $request->input('email')]);
+    }
+    /// Remove um usuário do banco de dados
+    public function destroy(UserModel $user)
+    {
+        $user->delete();
+    }
+    /// Exibe os detalhes de um usuário específico
+    public function show(UserModel $user)
+    {
         return response()->json($user);
+    }
+    /// Lista todos os usuários
+    public function list()
+    {
+        $users = UserModel::list();
+        return view("site.usuarios", compact('users'));
     }
 }
