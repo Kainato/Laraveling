@@ -27,8 +27,11 @@ Route::prefix('/user')->group(function () {
     // URL: http://localhost:8000/user/listagem
     Route::get('/list', [App\Http\Controllers\UserController::class, 'list'])->name('app.user.userlist');
     // Rota para adicionar novo usuário
-    // URL: http://localhost:8000/user/criar
-    Route::get('/add', [App\Http\Controllers\UserController::class])->name('app.user.usercreate');
+    // URL: http://localhost:8000/user/add
+    Route::get('/add', [App\Http\Controllers\UserController::class, 'create'])->name('app.user.usercreate');
+    // Rota para chamar a função do controlador que salva o novo usuário
+    // URL: http://localhost:8000/user/store
+    Route::post('/store', [App\Http\Controllers\UserController::class, 'store'])->name('app.user.store');
 });
 
 // -----------------------------------------------------------------------------

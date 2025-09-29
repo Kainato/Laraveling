@@ -4,17 +4,35 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\UserModel;
 
-
 class UserController extends Controller
 {
+    public function create()
+    {
+        return view('app.user.usercreate');
+    }
     /// Armazena um novo usuário no banco de dados
     public function store(Request $request)
     {
-        UserModel::create([
-            'name' => $request->input('name'),
-            'email' => $request->input('email'),
-            'password'=> bcrypt($request->input('password')),
+        // Validação dos dados recebidos
+        $data = $request->validate([
+            'nome' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'telefone' => 'nullable|string|max:20',
+            'idade' => 'nullable|integer',
+            'situacao' => 'nullable|in:true,false',
+            'password' => 'required|string',
         ]);
+        // Criação do usuário no banco de dados
+        UserModel::create([
+            'name' => $data['nome'] ?? 'Caio Calado',
+            'email' => $data['email'] ?? 'caiocaladaraujo@gmail.com',
+            'telefone' => $data['telefone'] ?? null,
+            'idade' => $data['idade'] ?? null,
+            'situacao' => $data['situacao'] ?? false,
+            'password' => bcrypt($data['password'] ?? '123456'),
+        ]);
+        // Redireciona para a lista de usuários com uma mensagem de sucesso
+        return redirect()->route('app.user.userlist')->with('success', 'Usuário cadastrado com sucesso!');
     }
     /// Atualiza os dados de um usuário existente
     public function update(Request $request, UserModel $user)
@@ -40,6 +58,6 @@ class UserController extends Controller
     public function list()
     {
         $users = UserModel::list();
-        return view("app.user.userlist", compact('users'));
+        return view('app.user.userlist', compact('users'));
     }
 }

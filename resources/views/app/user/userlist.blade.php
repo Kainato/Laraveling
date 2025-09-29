@@ -5,6 +5,9 @@
 @endsection
 
 @section('content')
+    @if (session('success'))
+        <div style="color: green;">{{ session('success') }}</div>
+    @endif
     <table>
         <thead>
             <tr>
