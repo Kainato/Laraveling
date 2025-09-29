@@ -25,11 +25,10 @@ Route::get('/laravel', function () {
 Route::prefix('/user')->group(function () {
     // Listagem de usuários
     // URL: http://localhost:8000/user/listagem
-    Route::get('/list', [App\Http\Controllers\UserController::class, 'list'])->name('listagem');
-    // Adicionar novo usuário
+    Route::get('/list', [App\Http\Controllers\UserController::class, 'list'])->name('app.user.userlist');
+    // Rota para adicionar novo usuário
     // URL: http://localhost:8000/user/criar
-    Route::get('/add', [App\Http\Controllers\UserController::class, 'store'])->name('criar');
-    // Editar usuário
+    Route::get('/add', [App\Http\Controllers\UserController::class])->name('app.user.usercreate');
 });
 
 // -----------------------------------------------------------------------------

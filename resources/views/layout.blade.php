@@ -60,7 +60,9 @@
         table,
         thead,
         td {
-            width: 100%;
+            width: auto;
+            min-width: 100%;
+            max-width: 100vw;
             border: 1px solid white;
             border-collapse: collapse;
             vertical-align: center;
@@ -433,17 +435,18 @@
         <div class="headerMenu">
             <ul>
                 <li><a href="{{ route('site.home') }}">Início</a></li>
+                <li><a href="{{ route('app.user.userlist') }}">Usuários</a></li>
             </ul>
         </div>
     </nav>
     <script src="{{ asset('assets/js/layout_scripts.js') }}"></script>
 </header>
 
-<body>
-    @yield('content')
-    <hr>
+<body style="min-height: 100vh; display: flex; flex-direction: column;">
+    <div style="flex: 1; padding: 20px;">
+        @yield('content')
+    </div>
+    <footer style="width: 100%;">
+        <p>&copy; 2025 | Kainato - Laraveling | Todos os direitos reservados.</p>
+    </footer>
 </body>
-
-<footer>
-    <p>&copy; 2025 | Kainato - Laraveling | Todos os direitos reservados.</p>
-</footer>

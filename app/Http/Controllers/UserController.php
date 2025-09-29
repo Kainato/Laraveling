@@ -40,6 +40,6 @@ class UserController extends Controller
     public function list()
     {
         $users = UserModel::list();
-        return view("site.usuarios", compact('users'));
+        return view("app.user.userlist", compact('users'));
     }
 }
