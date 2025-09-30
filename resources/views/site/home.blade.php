@@ -15,8 +15,7 @@
 
     <h2>Próximos passos</h2>
     <p>Os próximos passos incluem a implementação de novas funcionalidades, melhorias no design e na usabilidade do
-        site, e a correção de bugs e problemas de segurança. Além disso, pretendo adicionar mais conteúdo e
-        informações sobre mim e sobre o meu trabalho no desenvolvimento web.</p>
+        site, e a correção de bugs e problemas de segurança.</p>
     <h2>🚀 Sobre mim</h2>
     <ul>
         <li>🔭 Atualmente trabalhando na Teatech expandindo minha visão além do código, aplicando meus conhecimentos de
