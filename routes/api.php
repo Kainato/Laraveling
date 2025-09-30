@@ -22,12 +22,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::prefix('/auth')->group(function () {
     Route::post('/login', [AuthApiController::class, 'login']);
-    Route::post('/cadastrar', [AuthApiController::class, 'register']);
     Route::middleware('auth:sanctum')->post('/logout', [AuthApiController::class, 'logout']);
+    Route::post('/cadastrar', [AuthApiController::class, 'register']);
 });
 
 Route::prefix('/usuarios')->group(function () {
-    Route::middleware('auth:sanctum')->get('/', [UserApiController::class, 'list']);
     Route::middleware('auth:sanctum')->get('/{id}', [UserApiController::class, 'show']);
-    Route::middleware('auth:sanctum')->put('/{id}', [UserApiController::class, 'update']);
+    Route::middleware('auth:sanctum')->post('/update/{id}', [UserApiController::class, 'update']);
+    Route::middleware('auth:sanctum')->get('/', [UserApiController::class, 'list']);
 });

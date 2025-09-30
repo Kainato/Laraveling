@@ -4,12 +4,13 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class UserApiController extends Controller
 {
     public function show($id)
     {
-        $user = \App\Models\User::find($id);
+        $user = User::find($id);
         if ($user) {
             return response()->json($user);
         }
@@ -18,16 +19,38 @@ class UserApiController extends Controller
     }
     public function update(Request $request, $id)
     {
-        $user = \App\Models\User::find($id);
-        if ($user) {
-            $user->update($request->only(['nome', 'idade', 'password']));
-            return response()->json($user);
+        // Verifica se o token está válido
+        if (!$request->user()) {
+            return response()->json(['message' => 'Token inválido ou expirado'], 401);
         }
-        return response()->json(['message'=> 'Usuário não encontrado'],404);
+
+        // Captura todos os dados enviados
+        $data = $request->all();
+
+        // Busca o usuário; retorna 404 se não existir
+        $user = User::find($id);
+        if (!$user) {
+            return response()->json(['message' => 'Usuário não encontrado!'], 404);
+        }
+
+        // Atualiza os campos permitidos
+        if (isset($data['name'])) {
+            $user->name = $data['name'];
+        }
+        if (isset($data['email'])) {
+            $user->email = $data['email'];
+        }
+        if (isset($data['password'])) {
+            $user->password = bcrypt($data['password']);
+        }
+
+        $user->save();
+
+        return response()->json(['message' => 'Usuário atualizado com sucesso', 'user' => $user], 200);
     }
     public function list()
     {
-        $users = \App\Models\User::all();
+        $users = User::all();
         return response()->json($users);
     }
 }

@@ -17,18 +17,12 @@ class UserController extends Controller
         $data = $request->validate([
             'nome' => 'required|string|max:255',
             'email' => 'required|email|max:255',
-            'telefone' => 'nullable|string|max:20',
-            'idade' => 'nullable|integer',
-            'situacao' => 'nullable|in:true,false',
             'password' => 'required|string',
         ]);
         // Criação do usuário no banco de dados
         User::create([
             'name' => $data['nome'],
             'email' => $data['email'],
-            'telefone' => $data['telefone'] ?? null,
-            'idade' => $data['idade'] ?? null,
-            'situacao' => $data['situacao'] ?? false,
             'password' => bcrypt($data['password']),
         ]);
         // Redireciona para a lista de usuários com uma mensagem de sucesso

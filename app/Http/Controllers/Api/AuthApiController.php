@@ -10,41 +10,53 @@ class AuthApiController extends Controller
 {
     public function login(Request $request)
     {
-        $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
+        try {
+            $request->validate([
+                'email' => 'required|email',
+                'password' => 'required',
+            ]);
 
-        $user = \App\Models\User::where('email', $request->email)->first();
+            $user = \App\Models\User::where('email', $request->email)
+                ->whereNull('deleted_at')
+                ->first();
 
-        if (!$user || !Hash::check($request->password, $user->password)) {
-            return response()->json(['message' => 'Credenciais inválidas'], 401);
+            if (!$user || !Hash::check($request->password, $user->password)) {
+                return response()->json(['message' => 'Suas credenciais estão inválidas ou você ainda não se cadastrou!'], 401);
+            }
+
+            $token = $user->createToken('api-token')->plainTextToken;
+
+            return response()->json([
+                'message' => 'Login realizado com sucesso!',
+                'token' => $token,
+                'user' => $user,
+            ]);
+        } catch (\Throwable $e) {
+            return response()->json(['message' => 'Erro ao realizar login!', 'error' => $e->getMessage()], 500);
         }
-
-        $token = $user->createToken('api-token')->plainTextToken;
-
-        return response()->json([
-            'user' => $user,
-            'token' => $token,
-        ]);
     }
     public function logout(Request $request)
     {
-        $user = $request->user();
+        try {
+            $user = $request->user();
 
-        if ($user instanceof \App\Models\User) {
-            /** @var \Laravel\Sanctum\PersonalAccessToken|null $token */
-            $token = $user->currentAccessToken();
+            if ($user instanceof \App\Models\User) {
+                /** @var \Laravel\Sanctum\PersonalAccessToken|null $token */
+                $token = $user->currentAccessToken();
 
-            if ($token) {
-                $token->delete();
+                if ($token) {
+                    $token->delete();
+                }
+
+                $user->forceFill(['remember_token' => null])->save();
+            } else {
+                return response()->json(['message' => 'Usuário não autenticado'], 401);
             }
 
-            $user->remember_token = null;
-            $user->save();
+            return response()->json(['message' => 'Logout realizado com sucesso!']);
+        } catch (\Throwable $e) {
+            return response()->json(['message' => 'Erro ao realizar logout!', 'error' => $e->getMessage()], 500);
         }
-
-        return response()->json(['message' => 'Logout realizado com sucesso']);
     }
     public function register(Request $request)
     {
@@ -55,18 +67,23 @@ class AuthApiController extends Controller
             'password' => 'required|string|min:6',
         ]);
 
-        $user = \App\Models\User::create([
-            'nome' => $request->nome,
-            'email' => $request->email,
-            'idade' => $request->idade,
-            'password' => Hash::make($request->password),
-        ]);
+        try {
+            $user = \App\Models\User::create([
+                'nome' => $request->nome,
+                'email' => $request->email,
+                'idade' => $request->idade,
+                'password' => Hash::make($request->password),
+            ]);
+        } catch (\Throwable $e) {
+            return response()->json(['message' => 'Erro ao criar usuário!', 'error' => $e->getMessage()], 500);
+        }
 
         $token = $user->createToken('api-token')->plainTextToken;
 
         return response()->json([
-            'user' => $user,
+            'message' => 'Usuário criado com sucesso!',
             'token' => $token,
+            'user' => $user,
         ]);
     }
 }
