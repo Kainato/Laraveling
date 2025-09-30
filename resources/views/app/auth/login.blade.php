@@ -10,7 +10,7 @@
         <hr>
     @endif
 
-    <div style="position: fixed; inset: 0; display: flex; justify-content: center; align-items: center; padding: 10%">
+    <div style="display: flex; justify-content: center; align-items: center; padding: 10%">
         <form method="POST" action="{{ route('app.auth.login.process') }}" style="width: 100%; max-width: 600px;">
             @csrf
             <x-text-form-field label="E-mail" name="email" value="{{ old('email') }}" placeholder="Insira seu e-mail" />

@@ -114,6 +114,7 @@
         input,
         select,
         textarea {
+            width: 100%;
             padding: 10px;
             border: 2px solid #d84a51;
             border-radius: 12px;
@@ -425,34 +426,32 @@
     </style>
 </head>
 
-<header>
-    <nav class="headerContainer">
-        @yield('header')
-        <button class="toggle-button" aria-label="Toggle navigation">
-            &#9776;
-        </button>
-        <div class="headerMenu">
-            <ul>
-                <li><a href="{{ route('site.home') }}">Início</a></li>
-                @auth
-                    @if(auth()->user()->is_admin)
-                        <li><a href="{{ route('app.user.userlist') }}">Usuários</a></li>
-                    @endif
-                @endauth
-                <li>
-                    @guest
-                        <a href="{{ route('app.auth.login') }}">Login</a>
-                    @else
-                        <a href="{{ route('app.auth.logout') }}">Sair</a>
-                    @endguest
-                </li>
-            </ul>
-        </div>
-    </nav>
-    <script src="{{ asset('assets/js/layout_scripts.js') }}"></script>
-</header>
-
 <body style="min-height: 100vh; display: flex; flex-direction: column;">
+    <header>
+        <nav class="headerContainer">
+            @yield('header')
+            <button class="toggle-button" aria-label="Toggle navigation">
+                &#9776;
+            </button>
+            <div class="headerMenu">
+                <ul>
+                    <li><a href="{{ route('site.home') }}">Início</a></li>
+                    @auth
+                        @if (auth()->user()->is_admin)
+                            <li><a href="{{ route('app.user.userlist') }}">Usuários</a></li>
+                        @endif
+                    @endauth
+                    @guest
+                        <li> <a href="{{ route('app.auth.login') }}">Login</a></li>
+                    @else
+                        <li><a href="{{ route('app.auth.logout') }}">Sair</a></li>
+                    @endguest
+
+                </ul>
+            </div>
+        </nav>
+        <script src="{{ asset('assets/js/layout_scripts.js') }}"></script>
+    </header>
     <div style="flex: 1; padding: 5%;">
         @yield('content')
     </div>
