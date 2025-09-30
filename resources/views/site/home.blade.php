@@ -5,6 +5,10 @@
 @endsection
 
 @section('content')
+    @if (session('success'))
+        <div style="color: green;">{{ session('success') }}</div>
+        <hr>
+    @endif
     <h2>Seja bem-vindo!</h2>
     <p>Este site de exemplo foi desenvolvido como parte do curso de Laravel e serve como uma vitrine do meu trabalho
         e habilidades como desenvolvedor web. Utilizando o poderoso framework Laravel, criei uma aplicação que

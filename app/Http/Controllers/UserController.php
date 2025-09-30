@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App\Models\UserModel;
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -23,7 +23,7 @@ class UserController extends Controller
             'password' => 'required|string',
         ]);
         // Criação do usuário no banco de dados
-        UserModel::create([
+        User::create([
             'name' => $data['nome'] ?? 'Caio Calado',
             'email' => $data['email'] ?? 'caiocaladaraujo@gmail.com',
             'telefone' => $data['telefone'] ?? null,
@@ -35,29 +35,29 @@ class UserController extends Controller
         return redirect()->route('app.user.userlist')->with('success', 'Usuário cadastrado com sucesso!');
     }
     /// Atualiza os dados de um usuário existente
-    public function update(Request $request, UserModel $user)
+    public function update(Request $request, User $user)
     {
         $user->update($request->all());
     }
     /// Atualiza apenas o email de um usuário existente
-    public function updateEmail(Request $request, UserModel $user)
+    public function updateEmail(Request $request, User $user)
     {
         $user->update(['email' => $request->input('email')]);
     }
     /// Remove um usuário do banco de dados
-    public function destroy(UserModel $user)
+    public function destroy(User $user)
     {
         $user->delete();
     }
     /// Exibe os detalhes de um usuário específico
-    public function show(UserModel $user)
+    public function show(User $user)
     {
         return response()->json($user);
     }
     /// Lista todos os usuários
     public function list()
     {
-        $users = UserModel::list();
+        $users = User::list();
         return view('app.user.userlist', compact('users'));
     }
 }

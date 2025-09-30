@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('header')
-    <h1>Adicionar usuário</h1>
+    <h1>Cadastre-se</h1>
 @endsection
 
 @section('content')
@@ -16,7 +16,7 @@
         </div>
     @endif
 
-    <form method="POST" action="{{ route('app.user.store') }}">
+    <form method="POST" action="{{ route('app.auth.cadastro.process') }}">
         @csrf
         <x-text-form-field label="Nome de usuário" name="nome" value="{{ old('nome') }}" placeholder="Insira seu nome" />
         <hr>
@@ -24,12 +24,10 @@
         <hr>
         <x-text-form-field label="E-mail" name="email" value="{{ old('email') }}" placeholder="Insira seu e-mail" />
         <hr>
-        <x-dropdown name="situacao" label="Situação do usuário" :options="['true' => 'Ativo', 'false' => 'Inativo']" />
-        <hr>
         <x-text-form-field type="number" label="Idade" name="idade" value="{{ old('idade') }}" placeholder="Insira sua idade" />
-        <hr>
-        <x-text-form-field-phone label="Telefone" name="telefone" value="{{ old('telefone') }}" placeholder="Insira seu telefone" />
         <hr>
         <x-btn-submit>Salvar</x-btn-submit>
     </form>
+    <hr>
+    <p>Já tem uma conta? <a href="{{ route('app.auth.login') }}">Faça login agora mesmo!</a></p>
 @endsection

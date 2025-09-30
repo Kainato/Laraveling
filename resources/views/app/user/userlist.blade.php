@@ -7,6 +7,7 @@
 @section('content')
     @if (session('success'))
         <div style="color: green;">{{ session('success') }}</div>
+        <hr>
     @endif
     <table>
         <thead>
@@ -29,5 +30,5 @@
         Total de usuários: {{ count($users) }}
     </div>
     <hr>
-    <button onclick="window.location='{{ route('app.user.usercreate') }}'">Adicionar Usuário</button>
+    <button onclick="window.location='{{ route('app.auth.cadastro') }}'">Adicionar Usuário</button>
 @endsection

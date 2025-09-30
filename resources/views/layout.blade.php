@@ -436,6 +436,7 @@
             <ul>
                 <li><a href="{{ route('site.home') }}">Início</a></li>
                 <li><a href="{{ route('app.user.userlist') }}">Usuários</a></li>
+                <li><a href="{{ route('app.auth.login') }}">Login</a></li>
             </ul>
         </div>
     </nav>

@@ -16,22 +16,27 @@ Route::get('/laravel', function () {
     return view('welcome');
 })->name('laravel');
 
-
 // -----------------------------------------------------------------------------
 // -------------------------------- Menu do App --------------------------------
 // -----------------------------------------------------------------------------
+
+// Autenticação de Usuários
+Route::prefix('/auth')->group(function () {
+    // View Formulário de login
+    Route::get('/login', [App\Http\Controllers\LoginController::class, 'showLoginForm'])->name('app.auth.login');
+    // Processa o login do usuário
+    Route::post('/', [App\Http\Controllers\LoginController::class, 'login'])->name('app.auth.login.process');
+    // View Formulário de cadastro de usuário
+    Route::get('/register', [App\Http\Controllers\LoginController::class, 'showRegisterForm'])->name('app.auth.cadastro');
+    // Processa o cadastro do usuário
+    Route::post('/store', [App\Http\Controllers\LoginController::class, 'register'])->name('app.auth.cadastro.process');
+});
 
 // Rotas da integração com o usuário do Banco MySQL
 Route::prefix('/user')->group(function () {
     // Listagem de usuários
     // URL: http://localhost:8000/user/listagem
     Route::get('/list', [App\Http\Controllers\UserController::class, 'list'])->name('app.user.userlist');
-    // Rota para adicionar novo usuário
-    // URL: http://localhost:8000/user/add
-    Route::get('/add', [App\Http\Controllers\UserController::class, 'create'])->name('app.user.usercreate');
-    // Rota para chamar a função do controlador que salva o novo usuário
-    // URL: http://localhost:8000/user/store
-    Route::post('/store', [App\Http\Controllers\UserController::class, 'store'])->name('app.user.store');
 });
 
 // -----------------------------------------------------------------------------

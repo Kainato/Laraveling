@@ -20,7 +20,11 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'email_verified_at',
         'password',
+        'remember_token',
+        'created_at',
+        'updated_at'
     ];
 
     /**
@@ -42,4 +46,22 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    // Relacionamento com o modelo User (auto-relacionamento exemplo)
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    // Mutator para criptografar a senha antes de salvar no banco de dados
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = bcrypt($value);
+    }
+
+    // Listar todos os usuários
+    public static function list()
+    {
+        return self::all();
+    }
 }
