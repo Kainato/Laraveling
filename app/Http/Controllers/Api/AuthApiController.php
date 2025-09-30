@@ -60,30 +60,28 @@ class AuthApiController extends Controller
     }
     public function register(Request $request)
     {
-        $request->validate([
-            'nome' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email',
-            'idade' => 'required|integer',
-            'password' => 'required|string|min:6',
-        ]);
-
         try {
+            $request->validate([
+                'nome' => 'required|string|max:255',
+                'email' => 'required|email|unique:users,email',
+                'password' => 'required|string|min:6',
+            ]);
+
             $user = \App\Models\User::create([
-                'nome' => $request->nome,
+                'name' => $request->nome,
                 'email' => $request->email,
-                'idade' => $request->idade,
-                'password' => Hash::make($request->password),
+                'password' => $request->password
+            ]);
+
+            $token = $user->createToken('api-token')->plainTextToken;
+
+            return response()->json([
+                'message' => 'Usuário criado com sucesso!',
+                'token' => $token,
+                'user' => $user,
             ]);
         } catch (\Throwable $e) {
             return response()->json(['message' => 'Erro ao criar usuário!', 'error' => $e->getMessage()], 500);
         }
-
-        $token = $user->createToken('api-token')->plainTextToken;
-
-        return response()->json([
-            'message' => 'Usuário criado com sucesso!',
-            'token' => $token,
-            'user' => $user,
-        ]);
     }
 }

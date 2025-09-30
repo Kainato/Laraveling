@@ -8,6 +8,10 @@ use App\Models\User;
 
 class UserApiController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth:sanctum');
+    }
     public function show($id)
     {
         $user = User::find($id);
@@ -17,36 +21,39 @@ class UserApiController extends Controller
 
         return response()->json(['message' => 'Usuário não encontrado'], 404);
     }
+
     public function update(Request $request, $id)
     {
-        // Verifica se o token está válido
-        if (!$request->user()) {
-            return response()->json(['message' => 'Token inválido ou expirado'], 401);
-        }
+        try {
+            // Captura todos os dados enviados
+            $data = $request->all();
 
-        // Captura todos os dados enviados
-        $data = $request->all();
+            // Busca o usuário; retorna 404 se não existir
+            $user = User::find($id);
+            if (!$user) {
+                return response()->json(['message' => 'Usuário não encontrado!'], 404);
+            }
 
-        // Busca o usuário; retorna 404 se não existir
-        $user = User::find($id);
-        if (!$user) {
-            return response()->json(['message' => 'Usuário não encontrado!'], 404);
-        }
+            // Atualiza os campos permitidos
+            if (isset($data['name'])) {
+                $user->name = $data['name'];
+            }
+            if (isset($data['email'])) {
+                $user->email = $data['email'];
+            }
+            if (isset($data['password'])) {
+                $user->password = bcrypt($data['password']);
+            }
 
-        // Atualiza os campos permitidos
-        if (isset($data['name'])) {
-            $user->name = $data['name'];
-        }
-        if (isset($data['email'])) {
-            $user->email = $data['email'];
-        }
-        if (isset($data['password'])) {
-            $user->password = bcrypt($data['password']);
-        }
+            $user->save();
 
-        $user->save();
-
-        return response()->json(['message' => 'Usuário atualizado com sucesso', 'user' => $user], 200);
+            return response()->json(['message' => 'Usuário atualizado com sucesso', 'user' => $user], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Erro ao atualizar usuário',
+                'error' => $e->getMessage()
+            ], 500);
+        }
     }
     public function list()
     {
