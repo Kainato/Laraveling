@@ -30,6 +30,8 @@ Route::prefix('/auth')->group(function () {
     Route::get('/register', [App\Http\Controllers\LoginController::class, 'showRegisterForm'])->name('app.auth.cadastro');
     // Processa o cadastro do usuário
     Route::post('/store', [App\Http\Controllers\LoginController::class, 'register'])->name('app.auth.cadastro.process');
+    // Faz o logout do usuário
+    Route::get('/logout', [App\Http\Controllers\LoginController::class, 'logout'])->name('app.auth.logout');
 });
 
 // Rotas da integração com o usuário do Banco MySQL
