@@ -21,13 +21,13 @@ Route::get('/laravel', function () {
 // Autenticação de Usuários
 Route::prefix('/auth')->group(function () {
     // View Formulário de login
-    Route::get('/login', [App\Http\Controllers\LoginController::class, 'showLoginForm'])->name('app.auth.login');
+    Route::get('/acessar', [App\Http\Controllers\LoginController::class, 'showLoginForm'])->name('app.auth.login');
     // Processa o login do usuário
-    Route::post('/', [App\Http\Controllers\LoginController::class, 'login'])->name('app.auth.login.process');
+    Route::post('/login', [App\Http\Controllers\LoginController::class, 'login'])->name('app.auth.login.process');
     // View Formulário de cadastro de usuário
-    Route::get('/register', [App\Http\Controllers\LoginController::class, 'showRegisterForm'])->name('app.auth.cadastro');
+    Route::get('/cadastro', [App\Http\Controllers\LoginController::class, 'showRegisterForm'])->name('app.auth.cadastro');
     // Processa o cadastro do usuário
-    Route::post('/store', [App\Http\Controllers\LoginController::class, 'register'])->name('app.auth.cadastro.process');
+    Route::post('/register', [App\Http\Controllers\LoginController::class, 'register'])->name('app.auth.cadastro.process');
     // Faz o logout do usuário
     Route::get('/logout', [App\Http\Controllers\LoginController::class, 'logout'])->name('app.auth.logout');
 });
