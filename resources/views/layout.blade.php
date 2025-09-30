@@ -114,7 +114,6 @@
         input,
         select,
         textarea {
-            width: 80%;
             padding: 10px;
             border: 2px solid #d84a51;
             border-radius: 12px;
@@ -454,7 +453,7 @@
 </header>
 
 <body style="min-height: 100vh; display: flex; flex-direction: column;">
-    <div style="flex: 1; padding: 20px;">
+    <div style="flex: 1; padding: 5%;">
         @yield('content')
     </div>
     <footer style="width: 100%;">

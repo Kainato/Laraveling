@@ -10,14 +10,15 @@
         <hr>
     @endif
 
-    <form method="POST" action="{{ route('app.auth.login.process') }}">
-        @csrf
-        <x-text-form-field label="E-mail" name="email" value="{{ old('email') }}" placeholder="Insira seu e-mail" />
-        <hr>
-        <x-text-form-field label="Senha" name="password" type="password" placeholder="Insira sua senha" />
-        <hr>
-        <x-btn-submit>Entrar</x-btn-submit>
-    </form>
-    <hr>
-    <p>Não tem uma conta? <a href="{{ route('app.auth.cadastro') }}">Cadastre-se agora mesmo!</a></p>
+    <div style="position: fixed; inset: 0; display: flex; justify-content: center; align-items: center; padding: 10%">
+        <form method="POST" action="{{ route('app.auth.login.process') }}" style="width: 100%; max-width: 600px;">
+            @csrf
+            <x-text-form-field label="E-mail" name="email" value="{{ old('email') }}" placeholder="Insira seu e-mail" />
+            <hr>
+            <x-text-form-field label="Senha" name="password" type="password" placeholder="Insira sua senha" />
+            <hr>
+            <x-btn-submit>Entrar</x-btn-submit>
+            <p>Não tem uma conta? <a href="{{ route('app.auth.cadastro') }}">Cadastre-se agora mesmo!</a></p>
+        </form>
+    </div>
 @endsection
