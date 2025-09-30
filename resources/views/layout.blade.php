@@ -435,7 +435,11 @@
         <div class="headerMenu">
             <ul>
                 <li><a href="{{ route('site.home') }}">Início</a></li>
-                <li><a href="{{ route('app.user.userlist') }}">Usuários</a></li>
+                @auth
+                    @if(auth()->user()->is_admin)
+                        <li><a href="{{ route('app.user.userlist') }}">Usuários</a></li>
+                    @endif
+                @endauth
                 <li>
                     @guest
                         <a href="{{ route('app.auth.login') }}">Login</a>
