@@ -24,12 +24,12 @@ class UserController extends Controller
         ]);
         // Criação do usuário no banco de dados
         User::create([
-            'name' => $data['nome'] ?? 'Caio Calado',
-            'email' => $data['email'] ?? 'caiocaladaraujo@gmail.com',
+            'name' => $data['nome'],
+            'email' => $data['email'],
             'telefone' => $data['telefone'] ?? null,
             'idade' => $data['idade'] ?? null,
             'situacao' => $data['situacao'] ?? false,
-            'password' => bcrypt($data['password'] ?? '123456'),
+            'password' => bcrypt($data['password']),
         ]);
         // Redireciona para a lista de usuários com uma mensagem de sucesso
         return redirect()->route('app.user.userlist')->with('success', 'Usuário cadastrado com sucesso!');
