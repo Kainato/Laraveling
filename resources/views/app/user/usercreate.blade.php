@@ -1,4 +1,3 @@
-{{-- filepath: resources/views/app/user/usercreate.blade.php --}}
 @extends('layout')
 
 @section('header')
@@ -6,7 +5,6 @@
 @endsection
 
 @section('content')
-    {{-- Mensagem geral de erro --}}
     @if ($errors->any())
         <div style="color: red; margin-bottom: 10px;">
             <strong>Por favor, corrija os erros abaixo:</strong>
