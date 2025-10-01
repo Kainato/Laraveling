@@ -16,7 +16,7 @@
         </thead>
         <tbody>
             @foreach ($characters as $char)
-                <tr>
+                <tr style="cursor:pointer" onclick="window.location.href='{{ route('app.character.charshow', ['id' => $char->id]) }}'">
                     <td>{{ $char->name }}</td>
                     <td>{{ $char->class->name ?? '-' }}</td>
                     <td>{{ $char->origin->name ?? '-' }}</td>

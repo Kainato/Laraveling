@@ -46,7 +46,11 @@ class CharacterController extends Controller
     }
     public function show($id)
     {
-        // Lógica para mostrar um personagem específico
+        $character = Character::findOrFail($id);
+        if ($character->user_id !== auth()->id()) {
+            return redirect()->route('site.home')->with('error', 'Acesso não autorizado.');
+        }
+        return view("app.character.charshow", compact("character"));
     }
     public function edit($id)
     {

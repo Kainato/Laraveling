@@ -5,6 +5,10 @@
 @endsection
 
 @section('content')
+    @if (session('error'))
+        <div style="color: red;">{{ session('error') }}</div>
+        <hr>
+    @endif
     @if (session('success'))
         <div style="color: green;">{{ session('success') }}</div>
         <hr>
