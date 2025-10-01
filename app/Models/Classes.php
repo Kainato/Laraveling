@@ -25,6 +25,6 @@ class Classes extends Model
 
     public static function list()
     {
-        return self::all()->where('deleted_at', null);
+        return self::all();
     }
 }

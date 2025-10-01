@@ -26,6 +26,10 @@ class Character extends Model
         'intellect',
         'presence',
         'force',
+        'nex',
+        'pv',
+        'pe',
+        'san',
     ];
 
     protected $hidden = [
