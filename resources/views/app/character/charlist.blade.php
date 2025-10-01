@@ -12,21 +12,20 @@
                 <th>Classe</th>
                 <th>Origem</th>
                 <th>Trilha</th>
-                <th>Força</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($characters as $character)
+            @foreach ($characters as $char)
                 <tr>
-                    <td>{{ $character->name }}</td>
-                    <td>{{ $character->class->name ?? '-' }}</td>
+                    <td>{{ $char->name }}</td>
+                    <td>{{ $char->class->name ?? '-' }}</td>
+                    <td>{{ $char->origin->name ?? '-' }}</td>
+                    <td>{{ $char->trail->name ?? '-' }}</td>
                 </tr>
             @endforeach
         </tbody>
     </table>
     <hr>
-    <div>
-        Total de personagens: {{ count($characters) }}
-    </div>
+    Total de personagens: {{ count($characters) }}
     <hr>
 @endsection
