@@ -8,15 +8,18 @@
     <table>
         <thead>
             <tr>
-                <th>Usuário mencionado</th>
                 <th>Nome do personagem</th>
+                <th>Classe</th>
+                <th>Origem</th>
+                <th>Trilha</th>
+                <th>Força</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($characters as $character)
                 <tr>
-                    <td>{{ $character->user->name }}</td>
                     <td>{{ $character->name }}</td>
+                    <td>{{ $character->class->name ?? '-' }}</td>
                 </tr>
             @endforeach
         </tbody>
