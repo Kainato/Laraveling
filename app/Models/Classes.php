@@ -11,13 +11,16 @@ class Classes extends Model
 
     protected $fillable = [
         'name',
+        'initial_pv',
+        'add_pv',
+        'initial_pe',
+        'add_pe',
+        'initial_san',
+        'add_san',
     ];
 
     protected $hidden = [
         'id',
-        'created_at',
-        'updated_at',
-        'deleted_at',
     ];
 
     public static function list()
