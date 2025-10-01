@@ -34,14 +34,14 @@ Route::prefix('/auth')->group(function () {
 
 // Gerenciamento de fichas de personagens
 Route::prefix('/characters')->group(function () {
-    Route::get('/index', [App\Http\Controllers\CharacterController::class, 'index'])->name('app.characters.charindex');
-    Route::get('/list', [App\Http\Controllers\CharacterController::class, 'list'])->name('app.characters.charlist');
-    Route::get('/create', [App\Http\Controllers\CharacterController::class, 'create'])->name('app.characters.charcreate');
-    Route::post('/store', [App\Http\Controllers\CharacterController::class, 'store'])->name('app.characters.charstore');
-    Route::get('/{id}', [App\Http\Controllers\CharacterController::class, 'show'])->name('app.characters.charshow');
-    Route::get('/{id}/edit', [App\Http\Controllers\CharacterController::class, 'edit'])->name('app.characters.charedit');
-    Route::put('/{id}', [App\Http\Controllers\CharacterController::class, 'update'])->name('app.characters.charupdate');
-    Route::delete('/{id}', [App\Http\Controllers\CharacterController::class, 'destroy'])->name('app.characters.chardestroy');
+    Route::get('/index', [App\Http\Controllers\CharacterController::class, 'index'])->name('app.character.charindex');
+    Route::get('/list', [App\Http\Controllers\CharacterController::class, 'list'])->name('app.character.charlist');
+    Route::get('/create', [App\Http\Controllers\CharacterController::class, 'create'])->name('app.character.charcreate');
+    Route::post('/store', [App\Http\Controllers\CharacterController::class, 'store'])->name('app.character.charstore');
+    Route::get('/{id}', [App\Http\Controllers\CharacterController::class, 'show'])->name('app.character.charshow');
+    Route::get('/{id}/edit', [App\Http\Controllers\CharacterController::class, 'edit'])->name('app.character.charedit');
+    Route::put('/{id}', [App\Http\Controllers\CharacterController::class, 'update'])->name('app.character.charupdate');
+    Route::delete('/{id}', [App\Http\Controllers\CharacterController::class, 'destroy'])->name('app.character.chardestroy');
 });
 
 // Gerenciamento de Usuários

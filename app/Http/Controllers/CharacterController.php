@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Character;
+use App\Models\Classes;
+use App\Models\Origin;
+use App\Models\Trail;
 
 class CharacterController extends Controller
 {
@@ -21,7 +24,10 @@ class CharacterController extends Controller
     }
     public function create()
     {
-        // Lógica para mostrar o formulário de criação de personagem
+        $classes = Classes::list();
+        $origins = Origin::list();
+        $trails = Trail::list();
+        return view("app.character.charcreate", compact("classes", "origins", "trails"));
     }
     public function store(Request $request)
     {

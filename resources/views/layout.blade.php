@@ -156,14 +156,15 @@
             padding: 10px 15px;
             border: none;
             border-radius: 4px;
-            background-color: #d84a51;
-            color: white;
+            background-color: #fff;
+            color: #d84a51;
             font-size: 16px;
             cursor: pointer;
+            transition: background-color 0.2s, color 0.2s;
         }
-
         button:hover {
-            background-color: #BC181F;
+            background-color: #d84a51;
+            color: #fff;
         }
 
         /* ---------------------------------------------------------------------
@@ -445,7 +446,7 @@
                         <li><a href="{{ route('app.auth.login') }}">Fazer Login</a></li>
                         <li><a href="{{ route('app.auth.cadastro') }}">Cadastre-se</a></li>
                     @else
-                        <li><a href="{{ route('app.characters.charlist') }}">Personagens</a></li>
+                        <li><a href="{{ route('app.character.charlist') }}">Personagens</a></li>
                         <li><a href="{{ route('app.auth.logout') }}">Sair</a></li>
                     @endguest
 

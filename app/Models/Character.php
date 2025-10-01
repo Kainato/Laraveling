@@ -4,6 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Classes;
+use App\Models\Origin;
+use App\Models\Trail;
 
 class Character extends Model
 {
@@ -31,14 +34,23 @@ class Character extends Model
 
     public static function list()
     {
-        return self::all();
+        return self::all()->where('deleted_at', null);
     }
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class)->where('deleted_at', null);
     }
     public function class()
     {
-        return $this->belongsTo(Classes::class, 'class_id');
+        return $this->belongsTo(Classes::class, 'class_id')->where('deleted_at', null);
     }
+    public function origin()
+    {
+        return $this->belongsTo(Origin::class, 'origin_id')->where('deleted_at', null);
+    }
+    public function trail()
+    {
+        return $this->belongsTo(Trail::class, 'trail_id')->where('deleted_at', null);
+    }
+
 }

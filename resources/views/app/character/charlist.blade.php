@@ -26,6 +26,9 @@
         </tbody>
     </table>
     <hr>
-    Total de personagens: {{ count($characters) }}
+    <div style="display: flex; justify-content: space-between">
+        <span>Total de personagens: {{ count($characters) }}</span>
+        <button onclick="window.location.href='{{ route('app.character.charcreate') }}'">Criar novo personagem</button>
+    </div>
     <hr>
 @endsection
