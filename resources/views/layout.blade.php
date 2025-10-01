@@ -442,7 +442,8 @@
                         @endif
                     @endauth
                     @guest
-                        <li> <a href="{{ route('app.auth.login') }}">Login</a></li>
+                        <li> <a href="{{ route('app.auth.login') }}">Fazer Login</a></li>
+                        <li> <a href="{{ route('app.auth.cadastro') }}">Cadastre-se</a></li>
                     @else
                         <li><a href="{{ route('app.auth.logout') }}">Sair</a></li>
                     @endguest

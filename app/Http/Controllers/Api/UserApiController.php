@@ -14,12 +14,22 @@ class UserApiController extends Controller
     }
     public function show($id)
     {
-        $user = User::find($id);
-        if ($user) {
-            return response()->json($user);
+        try {
+            $user = User::find($id);
+            if ($user) {
+                return response()->json($user);
+            } else {
+                return response()->json(['message' => 'Usuário não encontrado!'], 404);
+            }
+        } catch (\Exception $e) {
+            return response()->json(
+                [
+                    'message' => 'Erro ao buscar usuário!',
+                    'error' => $e->getMessage(),
+                ],
+                500,
+            );
         }
-
-        return response()->json(['message' => 'Usuário não encontrado'], 404);
     }
 
     public function update(Request $request, $id)
@@ -49,15 +59,28 @@ class UserApiController extends Controller
 
             return response()->json(['message' => 'Usuário atualizado com sucesso', 'user' => $user], 200);
         } catch (\Exception $e) {
-            return response()->json([
-                'message' => 'Erro ao atualizar usuário',
-                'error' => $e->getMessage()
-            ], 500);
+            return response()->json(
+                [
+                    'message' => 'Erro ao atualizar usuário',
+                    'error' => $e->getMessage(),
+                ],
+                500,
+            );
         }
     }
     public function list()
     {
-        $users = User::all();
-        return response()->json($users);
+        try {
+            $users = User::all();
+            return response()->json($users);
+        } catch (\Exception $e) {
+            return response()->json(
+                [
+                    'message' => 'Erro ao listar usuários',
+                    'error' => $e->getMessage(),
+                ],
+                500,
+            );
+        }
     }
 }

@@ -16,9 +16,7 @@ class AuthApiController extends Controller
                 'password' => 'required',
             ]);
 
-            $user = \App\Models\User::where('email', $request->email)
-                ->whereNull('deleted_at')
-                ->first();
+            $user = \App\Models\User::where('email', $request->email)->whereNull('deleted_at')->first();
 
             if (!$user || !Hash::check($request->password, $user->password)) {
                 return response()->json(['message' => 'Suas credenciais estão inválidas ou você ainda não se cadastrou!'], 401);
@@ -32,7 +30,7 @@ class AuthApiController extends Controller
                 'user' => $user,
             ]);
         } catch (\Throwable $e) {
-            return response()->json(['message' => 'Erro ao realizar login!', 'error' => $e->getMessage()], 500);
+            return response()->json(['message' => 'Erro ao realizar login!', 'error' => 'Ocorreu um erro ao tentar fazer login! Tente novamente mais tarde.', 'details' => $e->getMessage()], 500);
         }
     }
     public function logout(Request $request)
@@ -70,7 +68,7 @@ class AuthApiController extends Controller
             $user = \App\Models\User::create([
                 'name' => $request->nome,
                 'email' => $request->email,
-                'password' => $request->password
+                'password' => Hash::make($request->password),
             ]);
 
             $token = $user->createToken('api-token')->plainTextToken;
