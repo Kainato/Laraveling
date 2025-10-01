@@ -32,6 +32,17 @@ class CharacterController extends Controller
     public function store(Request $request)
     {
         // Lógica para salvar um novo personagem
+        $request->validate([
+            'nome' => 'required|string|max:64',
+        ]);
+
+        $character = new Character();
+        $character->user_id = auth()->id();
+        $character->name = $request->input('nome');
+        // Atribua outros campos conforme necessário
+        $character->save();
+
+        return redirect()->route('app.character.charlist')->with('success', 'Personagem criado com sucesso!');
     }
     public function show($id)
     {
