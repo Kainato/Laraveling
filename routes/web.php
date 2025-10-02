@@ -42,6 +42,8 @@ Route::prefix('/characters')->group(function () {
     Route::get('/{id}/edit', [App\Http\Controllers\CharacterController::class, 'edit'])->name('app.character.charedit');
     Route::put('/{id}', [App\Http\Controllers\CharacterController::class, 'update'])->name('app.character.charupdate');
     Route::delete('/{id}', [App\Http\Controllers\CharacterController::class, 'destroy'])->name('app.character.chardestroy');
+    // Funções específicas
+    Route::post('/{id}/update-hp', [App\Http\Controllers\CharacterController::class, 'updateHP'])->name('app.character.updatehp');
 });
 
 // Gerenciamento de Usuários

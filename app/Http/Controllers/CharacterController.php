@@ -60,6 +60,20 @@ class CharacterController extends Controller
     {
         // Lógica para atualizar um personagem existente
     }
+    public function updateHP(Request $request, $id)
+    {
+        $request->validate([
+            'hp_current' => 'required|integer|min:0',
+        ]);
+        $character = Character::findOrFail($id);
+        if ($character->user_id !== auth()->id()) {
+            return redirect()->route('site.home')->with('error', 'Acesso não autorizado.');
+        }
+        $character->pv = $request->input('hp_current');
+        $character->save();
+
+        return redirect()->route('app.character.charshow', $character->id)->with('success', 'Pontos de vida atualizados com sucesso!');
+    }
     public function destroy($id)
     {
         // Lógica para deletar um personagem

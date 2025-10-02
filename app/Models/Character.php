@@ -46,15 +46,15 @@ class Character extends Model
     }
     public function class()
     {
-        return $this->belongsTo(Classes::class, 'class_id')->where('deleted_at', null);
+        return $this->belongsTo(Classes::class, 'class_id');
     }
     public function origin()
     {
-        return $this->belongsTo(Origin::class, 'origin_id')->where('deleted_at', null);
+        return $this->belongsTo(Origin::class, 'origin_id');
     }
     public function trail()
     {
-        return $this->belongsTo(Trail::class, 'trail_id')->where('deleted_at', null);
+        return $this->belongsTo(Trail::class, 'trail_id');
     }
 
 }
