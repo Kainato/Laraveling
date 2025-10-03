@@ -22,7 +22,14 @@ class CharResource extends Resource
 {
     protected static ?string $model = Character::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-user';
+    // Menu lateral
+    protected static ?string $navigationLabel = 'Personagens';
+    // Título
+    protected static ?string $pluralLabel = 'Meus personagens';
+    // Botão de ação
+    protected static ?string $label = 'personagem';
+    protected static ?int $navigationSort = 1;
 
     public static function form(Form $form): Form
     {
