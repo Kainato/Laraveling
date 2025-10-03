@@ -1,0 +1,35 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateCharactersTable extends Migration
+{
+    public function up()
+    {
+        Schema::create('characters', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->string('name');
+            $table->foreignId('class_id')->constrained()->onDelete('cascade');
+            $table->foreignId('origin_id')->constrained()->onDelete('cascade');
+            $table->foreignId('trail_id')->constrained()->onDelete('cascade');
+            $table->integer('strength')->nullable();
+            $table->integer('agility')->nullable();
+            $table->integer('intellect')->nullable();
+            $table->integer('presence')->nullable();
+            $table->integer('force')->nullable();
+            $table->integer('nex')->nullable();
+            $table->integer('pv')->nullable();
+            $table->integer('pe')->nullable();
+            $table->integer('san')->nullable();
+            $table->timestamps();
+        });
+    }
+
+    public function down()
+    {
+        Schema::dropIfExists('characters');
+    }
+}
