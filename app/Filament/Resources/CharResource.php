@@ -23,7 +23,26 @@ class CharResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('user_id')->required(),
+                Forms\Components\TextInput::make('name')->required(),
+                Forms\Components\Select::make('class_id')
+                ->relationship('class', 'name')
+                ->required(),
+                Forms\Components\Select::make('origin_id')
+                ->relationship('origin', 'name')
+                ->required(),
+                Forms\Components\Select::make('trail_id')
+                ->relationship('trail', 'name')
+                ->required(),
+                Forms\Components\TextInput::make('strength')->numeric(),
+                Forms\Components\TextInput::make('agility')->numeric(),
+                Forms\Components\TextInput::make('intellect')->numeric(),
+                Forms\Components\TextInput::make('presence')->numeric(),
+                Forms\Components\TextInput::make('force')->numeric(),
+                Forms\Components\TextInput::make('nex')->numeric(),
+                Forms\Components\TextInput::make('pv')->numeric(),
+                Forms\Components\TextInput::make('pe')->numeric(),
+                Forms\Components\TextInput::make('san')->numeric(),
             ]);
     }
 
@@ -31,7 +50,11 @@ class CharResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('name')->sortable()->searchable()->label('Nome'),
+                Tables\Columns\TextColumn::make('class.name')->label('Classe'),
+                Tables\Columns\TextColumn::make('origin.name')->label('Origem'),
+                Tables\Columns\TextColumn::make('trail.name')->label('Trilha'),
+                Tables\Columns\TextColumn::make('nex')->label('NEX'),
             ])
             ->filters([
                 //
