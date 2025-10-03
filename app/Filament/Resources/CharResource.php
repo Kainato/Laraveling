@@ -119,7 +119,6 @@ class CharResource extends Resource
                             if ($nex >= 95) $bonus++;
                             $bonus = min($bonus, 5); // Limite de 5 pontos de bônus
                             $total = $bonus + $base;
-
                             // Soma dos pontos já distribuídos nos atributos acima do valor base (1)
                             $distribuidos = 0;
                             $atributos = [
@@ -136,7 +135,6 @@ class CharResource extends Resource
                                     $distribuidos += $valor;
                                 }
                             }
-
                             $disponiveis = $total - $distribuidos;
                             return $disponiveis . ' pontos';
                         }),
