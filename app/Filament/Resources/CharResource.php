@@ -161,12 +161,29 @@ class CharResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
-            ->columns([Tables\Columns\TextColumn::make('name')->sortable()->searchable()->label('Nome'), Tables\Columns\TextColumn::make('class.name')->label('Classe'), Tables\Columns\TextColumn::make('origin.name')->label('Origem'), Tables\Columns\TextColumn::make('trail.name')->label('Trilha'), Tables\Columns\TextColumn::make('nex')->label('NEX')])
+            ->columns([
+                Tables\Columns\TextColumn::make('name')
+                    ->label('Nome')
+                    ->sortable()
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('class.name')
+                    ->label('Classe')
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('origin.name')
+                    ->label('Origem')
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('trail.name')
+                    ->label('Trilha')
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('nex')
+                    ->label('NEX')
+                    ->sortable(),
+            ])
             ->filters([
                 //
             ])
             ->actions([Tables\Actions\EditAction::make()])
-            ->bulkActions([Tables\Actions\BulkActionGroup::make([Tables\Actions\DeleteBulkAction::make(), ExportAction::make('export')])]);
+            ->bulkActions([]);
     }
 
     public static function getRelations(): array
