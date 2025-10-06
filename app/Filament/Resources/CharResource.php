@@ -177,6 +177,7 @@ class CharResource extends Resource
                     ->label('NEX')
                     ->sortable(),
             ])
+            ->defaultSort('name', 'asc')
             ->filters([
                 SelectFilter::make('class_id')
                     ->relationship('class', 'name')

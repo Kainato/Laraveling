@@ -97,6 +97,7 @@ class ClassesResource extends Resource
                     ->sortable()
                     ->searchable(),
             ])
+            ->defaultSort('name', 'asc')
             ->filters([
                 //
             ])
