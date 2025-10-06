@@ -26,6 +26,7 @@ O Laravel segue o padrão **MVC (Model-View-Controller)** e tem uma estrutura de
   * `api.php` → Rotas de API (JSON).
   * `console.php` → Rotas de comandos Artisan.
   * `channels.php` → Rotas de broadcast/eventos.
+* Para listar todas as rotas presentes no projeto, utilize o comando `php artisan route:list` ou acesse a extensão do vs code Laravel Artisan e acesse a funcionalidade `Artisan: Route List`
 
 ### 4. **Resources (`/resources`)**
 

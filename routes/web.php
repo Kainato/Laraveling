@@ -7,7 +7,16 @@ use Illuminate\Support\Facades\Route;
 // -----------------------------------------------------------------------------
 
 // # Página Inicial
-Route::get('/', [App\Http\Controllers\HomeController::class, 'home'])->name('site.home');
+// Route::get('/', [App\Http\Controllers\HomeController::class, 'home'])->name('site.home');
+Route::get('/', function () {
+    if (auth()->check()) {
+        // Se o usuário já estiver logado, redireciona para o dashboard do Filament
+        return redirect()->route('filament.admin.pages.dashboard');
+    }
+
+    // Se não estiver logado, redireciona para o login do Filament
+    return redirect()->route('filament.admin.auth.login');
+});
 
 // Página de documentação do Laravel
 Route::get('/laravel', function () {
