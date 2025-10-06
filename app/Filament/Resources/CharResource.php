@@ -17,6 +17,7 @@ use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Placeholder;
+use Filament\Tables\Filters\SelectFilter;
 
 class CharResource extends Resource
 {
@@ -167,22 +168,21 @@ class CharResource extends Resource
                     ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('class.name')
-                    ->label('Classe')
-                    ->sortable(),
+                    ->label('Classe'),
                 Tables\Columns\TextColumn::make('origin.name')
-                    ->label('Origem')
-                    ->sortable(),
+                    ->label('Origem'),
                 Tables\Columns\TextColumn::make('trail.name')
-                    ->label('Trilha')
-                    ->sortable(),
+                    ->label('Trilha'),
                 Tables\Columns\TextColumn::make('nex')
                     ->label('NEX')
                     ->sortable(),
             ])
             ->filters([
-                //
+                SelectFilter::make('class_id')
+                    ->relationship('class', 'name')
+                    ->label('Filtrar por classe'),
             ])
-            ->actions([Tables\Actions\EditAction::make()])
+            ->actions([Tables\Actions\ViewAction::make()])
             ->bulkActions([]);
     }
 
@@ -199,6 +199,7 @@ class CharResource extends Resource
             'index' => Pages\ListChars::route('/'),
             'create' => Pages\CreateChar::route('/create'),
             'edit' => Pages\EditChar::route('/{record}/edit'),
+            'view' => Pages\ViewChar::route('/{record}'),
         ];
     }
 }
